@@ -36,7 +36,7 @@ RUN mkdir -p /usr/local/bin
 
 WORKDIR /usr/local/bin
 COPY --from=builder /opt/athena/build/src/Athena .
-COPY --from=builder /opt/athena/build/src/service .
+COPY --from=builder /opt/athena/build/src/services .
 RUN mkdir -p /var/lib/athena
 WORKDIR /var/lib/athena
 ENTRYPOINT ["/usr/local/bin/Athena"]
