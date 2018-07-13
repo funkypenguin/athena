@@ -32,12 +32,11 @@ RUN apt-get update && \
       libreadline-dev \
      && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /usr/local/bin && mkdir -p /tmp/checkpoints 
+RUN mkdir -p /usr/local/bin
 
 WORKDIR /usr/local/bin
 COPY --from=builder /opt/athena/build/src/Athena .
-COPY --from=builder /opt/athena/build/src/wallet .
-COPY --from=builder /opt/athena/build/src/solominer .
+COPY --from=builder /opt/athena/build/src/service .
 RUN mkdir -p /var/lib/athena
 WORKDIR /var/lib/athena
 ENTRYPOINT ["/usr/local/bin/Athena"]
